@@ -1,0 +1,42 @@
+package com.mycompany.sistemanotasunifsa;
+
+public class Aluno {
+
+    protected String nome;
+    protected String matricula;
+    protected double notaFinal;
+
+    public Aluno(String nome, String matricula, double notaFinal) {
+
+        this.nome = (nome != null && !nome.trim().isEmpty()) 
+                    ? nome : "Nome não informado";
+
+        this.matricula = matricula;
+
+        this.notaFinal = (notaFinal >= 0 && notaFinal <= 10) 
+                         ? notaFinal : 0.0;
+    }
+
+    public double getNota() {
+        return notaFinal;
+    }
+
+    public void setNota(double nota) {
+        if (nota >= 0 && nota <= 10) {
+            this.notaFinal = nota;
+        }
+    }
+    public void ajustarNota(double novaNota){
+        setNota(novaNota);
+    }
+
+    public void exibirDados() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Matrícula: " + matricula);
+        System.out.println("Nota Final: " + notaFinal);
+    }
+
+    public boolean verificarAprovacao() {
+        return false;
+    }
+}
