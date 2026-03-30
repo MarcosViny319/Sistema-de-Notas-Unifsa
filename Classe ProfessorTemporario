@@ -1,0 +1,31 @@
+package com.mycompany.sistemanotasunifsa;
+
+public class ProfessorTemporario extends Professor {
+
+    private int mesesContrato;
+
+    public ProfessorTemporario(String nome, String matricula, double salario, int mesesContrato) {
+        super(nome, matricula, salario);
+        this.mesesContrato = mesesContrato;
+    }
+
+    public boolean contratoAtivo() {
+        return mesesContrato > 0;
+    }
+
+    public void diminuirMesContrato() {
+        if (mesesContrato > 0) {
+            mesesContrato--;
+        }
+    }
+
+    @Override
+    public void aumentarSalario(double valor) {
+        if (!contratoAtivo()) {
+            System.out.println("Erro: contrato encerrado! Não é possível aumentar o salário.");
+            return;
+        }
+
+        super.aumentarSalario(valor);
+    }
+}
