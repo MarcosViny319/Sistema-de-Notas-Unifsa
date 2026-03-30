@@ -1,0 +1,56 @@
+package com.mycompany.sistemanotasunifsa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Disciplina {
+
+    private String nome;
+    private Professor professor;
+    private List<Aluno> alunos;
+
+    public Disciplina(String nome, Professor professor) {
+
+        this.nome = (nome != null && !nome.trim().isEmpty()) 
+                    ? nome : "Disciplina sem nome";
+
+        if (professor != null) {
+            this.professor = professor;
+        } else {
+            throw new IllegalArgumentException("A disciplina deve ter um professor válido!");
+        }
+
+        this.alunos = new ArrayList<>();
+    }
+
+    public void adicionarAluno(Aluno aluno) {
+
+        if (aluno == null) {
+            System.out.println("Aluno inválido!");
+            return;
+        }
+
+        if (alunos.contains(aluno)) {
+            System.out.println("Aluno já está na disciplina!");
+        } else {
+            alunos.add(aluno);
+            System.out.println("Aluno adicionado com sucesso!");
+        }
+    }
+
+    public void listarAlunos() {
+
+        System.out.println("Disciplina: " + nome);
+        System.out.println("Professor: " + professor.getSalario()); // ou nome, se tiver getter
+
+        if (alunos.isEmpty()) {
+            System.out.println("Nenhum aluno matriculado.");
+            return;
+        }
+
+        for (Aluno a : alunos) {
+            a.exibirDados();
+            System.out.println("-------------------");
+        }
+    }
+}
