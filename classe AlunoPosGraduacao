@@ -1,0 +1,17 @@
+package com.mycompany.sistemanotasunifsa;
+
+public class AlunoPosGraduacao extends Aluno {
+
+    public AlunoPosGraduacao(String nome, String matricula, double notaFinal) {
+        super(nome, matricula, notaFinal);
+    }
+
+    @Override
+    public boolean verificarAprovacao() {
+        return notaFinal >= 6.0;
+    }
+
+    public void publicarArtigo() {
+        System.out.println(nome + " publicou um artigo científico!");
+    }
+}
